@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.png" alt="explore-unknowns: map the unknowns of a task before you build it" width="100%">
+</p>
+
 # explore-unknowns
 
 [![skills.sh](https://skills.sh/b/rhnfzl/explore-unknowns)](https://skills.sh/rhnfzl/explore-unknowns)
