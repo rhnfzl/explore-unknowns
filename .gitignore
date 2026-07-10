@@ -1,0 +1,10 @@
+# A filled-in territory.md holds your project's internals (paths, env names, memory
+# locations, the people who own each surface). Never commit it. Ship only the example.
+territory.md
+!territory.example.md
+
+# OS / editor cruft
+.DS_Store
+*.swp
+.idea/
+.vscode/

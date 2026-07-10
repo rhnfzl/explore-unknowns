@@ -1,0 +1,9 @@
+{
+  "name": "explore-unknowns",
+  "description": "Map the unknowns of a task before you build it: a five-stage interview that hands you a four-quadrant map (settled ground, open decisions, taste, and landmines) you keep.",
+  "version": "1.0.0",
+  "author": { "name": "rhnfzl" },
+  "homepage": "https://github.com/rhnfzl/explore-unknowns",
+  "license": "MIT",
+  "keywords": ["skill", "agent-skills", "planning", "brainstorming", "discovery", "scoping", "unknowns"]
+}

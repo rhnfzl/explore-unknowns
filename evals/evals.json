@@ -1,0 +1,50 @@
+{
+  "skill_name": "explore-unknowns",
+  "evals": [
+    {
+      "id": 0,
+      "name": "blindspot-unfamiliar-auth",
+      "prompt": "I need to add a new permission check to our web app's session middleware, but I honestly don't know how auth currently flows through the request handlers, or where the session state is stored. Before I touch anything, help me figure out what I'm missing and what I actually need to decide.",
+      "expected_output": "Opens the walk instead of coding: names the entrance (full walk or blindspot pass), scans the codebase and cites real files with line refs for settled ground, captures ground state, names the stages ahead, surfaces the questions that must be decided, and does NOT start writing the implementation. If a territory profile is present it leans on the project's memory store and graph and flags the profile's landmine families.",
+      "assertions": [
+        "Opens by mapping the task (settled ground, what is unknown, what to decide) instead of starting to implement",
+        "Cites at least one real file as settled ground (a concrete path, ideally with a line reference)",
+        "Surfaces named decisions or questions for the user to answer, not just a summary of the code",
+        "Flags at least one landmine family (a hidden trap the change could trip, for example an environment-specific config flag or a boundary two components disagree about)",
+        "Names the walk shape (declares the entrance and/or the stages ahead)",
+        "Contains zero em dashes",
+        "Does not write implementation code for the new permission check"
+      ],
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "design-directions-dashboard",
+      "prompt": "I want a better dashboard to show our CI test results (pass/fail per suite, flaky rate, run duration) but I have no visual taste and don't really know what's possible. Help me figure out what I want before I build it.",
+      "expected_output": "Recognizes a know-it-when-I-see-it taste problem: hands the user something concrete to react to (several distinct design directions with fake but plausible data) rather than asking them to describe what they want, keeps it a mock before wiring, and assembles the reply with steal/skip style choices. Does not jump into building the real dashboard.",
+      "assertions": [
+        "Recognizes this as a know-it-when-you-see-it taste problem rather than a fully specified build request",
+        "Hands the user something concrete to react to (several distinct design directions, or a clickable mock with plausible fake data) instead of asking them to describe what they want",
+        "Keeps it a mock before wiring; does not build or wire the real dashboard against live data",
+        "Assembles the reply for the user (pick-a-direction or steal/skip style choices, so their reaction is their next message)",
+        "Names the walk shape (declares the entrance and/or the stages ahead)",
+        "Contains zero em dashes"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "reference-port-ratelimiter",
+      "prompt": "I'm about to port the token-bucket backoff from a Rust rate-limiter crate into our TypeScript API client and I want to capture the exact backoff semantics, not just something that looks close. Where do I start?",
+      "expected_output": "Treats the reference implementation as the source of truth: proposes reading the crate and producing a semantics map (what it does with excerpts, how each behavior maps to the target stack, every place the port cannot be literal) before any code is written. Degrades gracefully to a general walk when no project profile applies. Does not immediately write TypeScript.",
+      "assertions": [
+        "Treats the reference crate as the source of truth: proposes reading it and producing a semantics map (behaviors with excerpts, how each maps to the target stack, where the port cannot be literal) before any code",
+        "Defers writing TypeScript until the semantics are mapped and confirmed",
+        "Degrades to a general walk: does not fabricate project-specific memory, graph, or territory claims when no profile applies",
+        "Names the walk shape (declares the entrance and/or the stages ahead)",
+        "Contains zero em dashes"
+      ],
+      "files": []
+    }
+  ]
+}
