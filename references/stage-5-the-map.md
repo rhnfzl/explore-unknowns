@@ -69,14 +69,22 @@ scrollback.
 
 ## Discovery priority
 
-Every discovery gets exactly one plain priority label while remaining in its
-natural quadrant:
+Before tracing, establish the current task boundary from the request and relevant diff.
+Classify every discovery against that boundary with exactly one label while keeping
+it in its natural quadrant:
 
-- **Changes this task:** changes the prompt, scope, a decision, verification, or
-  a risk inherited by the touched path.
-- **Nearby finding:** useful context encountered on the causal trace that does
-  not change this task.
-- **Urgent outside scope:** reserved for serious security or data-loss risk.
+- **Changes this task:** the current task cannot be completed correctly without
+  changing its prompt, scope, a decision, verification, or a risk inherited by
+  the touched path.
+- **Nearby finding:** encountered context does not need to be addressed for the
+  current task to complete correctly, even when it shares a file or is
+  interesting.
+- **Urgent outside scope:** overrides `Nearby finding` for a serious security or
+  data-loss risk. Surface it prominently, but do not silently add it to task scope.
+
+A serious risk actually inherited by the touched path remains `Changes this
+task`; otherwise a serious outside-scope security or data-loss risk is `Urgent
+outside scope`.
 
 Present `Changes this task` entries first. Keep `Nearby finding` and `Urgent
 outside scope` entries visible in the same four-quadrant map, not in a separate
