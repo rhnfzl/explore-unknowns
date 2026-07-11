@@ -5,12 +5,13 @@
       "id": 0,
       "name": "blindspot-unfamiliar-auth",
       "prompt": "I need to add a new permission check to our web app's session middleware, but I honestly don't know how auth currently flows through the request handlers, or where the session state is stored. Before I touch anything, help me figure out what I'm missing and what I actually need to decide.",
-      "expected_output": "Opens the walk instead of coding: names the entrance (full walk or blindspot pass), scans the codebase and cites real files with line refs for settled ground, captures ground state, names the stages ahead, surfaces the questions that must be decided, and does NOT start writing the implementation. If a territory profile is present it leans on the project's memory store and graph and flags the profile's landmine families.",
+      "expected_output": "Opens the walk instead of coding: names the entrance (full walk or blindspot pass), maps settled ground and unknowns, surfaces the decisions that must be made, and does not start writing the implementation. Because no repository files or evidence are supplied, it states that limitation and does not invent paths, line references, memory, graph, or territory claims.",
       "assertions": [
         "Opens by mapping the task (settled ground, what is unknown, what to decide) instead of starting to implement",
-        "Cites at least one real file as settled ground (a concrete path, ideally with a line reference)",
+        "States that repository evidence is unavailable because no files or repository access were supplied",
+        "Does not invent file paths, line references, memory, graph, or territory evidence",
         "Surfaces named decisions or questions for the user to answer, not just a summary of the code",
-        "Flags at least one landmine family (a hidden trap the change could trip, for example an environment-specific config flag or a boundary two components disagree about)",
+        "Names at least one auth landmine to investigate, while clearly marking it as unverified rather than settled fact",
         "Names the walk shape (declares the entrance and/or the stages ahead)",
         "Contains zero em dashes",
         "Does not write implementation code for the new permission check"
@@ -42,6 +43,87 @@
         "Defers writing TypeScript until the semantics are mapped and confirmed",
         "Degrades to a general walk: does not fabricate project-specific memory, graph, or territory claims when no profile applies",
         "Names the walk shape (declares the entrance and/or the stages ahead)",
+        "Contains zero em dashes"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "mid-build-diverged-plan",
+      "prompt": "Implementation is already underway and there was no pre-build unknowns map. The fixed file implementation-notes.md belongs to another task, so do not replace it. My plan has now diverged because an edge case changed the implementation. Enter the exploration workflow from where I am now and preserve enough context for the rest of this task.",
+      "expected_output": "Declares a mid-build entrance without replaying the full five-stage walk. Creates or reuses a phase-stamped partial map with a date-kind-task filename and a separate task-scoped implementation ledger. The ledger records planned versus actual behavior, why it changed, risk, new unknowns, and verification, while leaving the unrelated implementation-notes.md untouched.",
+      "assertions": [
+        "Explicitly declares a mid-build entrance",
+        "Does not restart or replay the full five-stage walk",
+        "Creates or reuses a partial unknowns map marked with the mid-build phase",
+        "Uses a date-kind-task filename for the task artifact",
+        "Creates a task-scoped implementation ledger instead of using the fixed implementation-notes.md",
+        "Captures planned versus actual behavior, the reason for divergence, and the resulting risk",
+        "Captures new unknowns and how the changed behavior will be verified",
+        "Never overwrites or repurposes the unrelated implementation-notes.md",
+        "Contains zero em dashes"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "post-build-large-pr-merge-readiness",
+      "prompt": "A large pull request is implemented and I want a merge-readiness review, but nobody made an unknowns map or implementation ledger before or during the build. Reconstruct what matters from the diff and whatever repository evidence is available, then help me prove that I understand the risky parts before merge.",
+      "expected_output": "Enters post-build at the artifact tier and reconstructs a phase-stamped partial map from the diff and available evidence. Produces a task-scoped explainer and quiz, identifies merge-critical questions, and blocks merge readiness until those questions are answered correctly.",
+      "assertions": [
+        "Declares a post-build entrance and artifact-tier treatment for the large change",
+        "Reconstructs a partial unknowns map from the diff and available evidence instead of pretending a prior map exists",
+        "Marks the reconstructed map with the post-build phase",
+        "Produces a task-scoped explainer",
+        "Produces a task-scoped quiz focused on the risky or merge-critical parts",
+        "Blocks merge readiness until every merge-critical question is answered correctly",
+        "Contains zero em dashes"
+      ],
+      "files": []
+    },
+    {
+      "id": 5,
+      "name": "post-build-small-inline",
+      "prompt": "I just finished a small, low-risk change. Give me the post-build understanding pass, but keep the ceremony proportional to the change.",
+      "expected_output": "Uses the inline post-build tier: gives a concise explanation in the response, creates no formal artifact, requires no quiz, and offers a lightweight understanding check only if meaningful uncertainty remains.",
+      "assertions": [
+        "Declares or clearly uses the inline post-build tier",
+        "Provides a concise inline explanation of the small change",
+        "Does not create or require a formal explainer artifact",
+        "Does not impose a mandatory quiz",
+        "Offers a lightweight understanding check only when uncertainty remains",
+        "Contains zero em dashes"
+      ],
+      "files": []
+    },
+    {
+      "id": 6,
+      "name": "adaptive-context-and-blindspots",
+      "prompt": "Run an adaptive blindspot pass for a change whose origin and impact cross several callers and consumers. Before asking me for context, inspect the repository, Git state, project profile, memory, and any sources named in the task. Trace far enough to explain the change, but do not wander into unrelated branches. Keep nearby discoveries visible, including anything that could cause serious security or data loss.",
+      "expected_output": "Uses repository evidence before interview questions, scanning the repository, Git state, profile, memory, and named sources that are available. Requests external context only for a relevant unresolved decision. Traces as many callers, consumers, or dependencies as needed to explain origin and impact, then stops at unrelated branches. Retains encountered findings in the four-quadrant map and classifies them with the plain labels Changes this task, Nearby finding, or Urgent outside scope, reserving the urgent label for serious security or data-loss risk.",
+      "assertions": [
+        "Scans available repository evidence, Git state, project profile, memory, and named sources before asking the user for context",
+        "Asks for external context only when a relevant decision remains unresolved after the available evidence is scanned",
+        "Traces enough callers, consumers, or dependencies to explain both the change's origin and its impact",
+        "Stops tracing when a branch is unrelated to the task",
+        "Keeps all encountered findings visible in the four-quadrant map rather than parking nearby findings elsewhere",
+        "Uses the plain label Changes this task for in-scope work",
+        "Uses the plain label Nearby finding for relevant non-blocking discoveries",
+        "Uses the plain label Urgent outside scope only for serious security or data-loss risk",
+        "Contains zero em dashes"
+      ],
+      "files": []
+    },
+    {
+      "id": 7,
+      "name": "interview-close-high-impact-unknowns",
+      "prompt": "The evidence scan left three open decisions on the unknowns map. Interview me to close them without turning the conversation into a questionnaire, and keep the map visibly current as each answer lands.",
+      "expected_output": "Starts with the highest-impact unresolved decision, asks exactly one question at a time, and records each answer as visible closure on the map before moving to the next open decision.",
+      "assertions": [
+        "Asks exactly one question at a time",
+        "Starts with the highest-impact unresolved decision",
+        "Updates the map after each answer so the newly closed decision is visible",
+        "Does not ask the next question until the current answer has been reflected on the map",
         "Contains zero em dashes"
       ],
       "files": []
