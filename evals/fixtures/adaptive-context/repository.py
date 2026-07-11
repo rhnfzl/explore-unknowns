@@ -21,7 +21,7 @@ def recover(current: Path, backup: Path) -> dict:
 
 
 def draft_metrics(write_result: dict[str, str]) -> bool:
-    return write_result["atomic_write"]
+    return bool(write_result["atomic_write"])
 
 
 def cleanup_old_drafts(current: Path, backup: Path) -> dict:
