@@ -96,6 +96,8 @@ file, not by threading options through the walk.
   stage's scheduled turn to see anything. That wait is the single most common
   way this walk fails: it stalls on scoping questions when a rendered option
   would have answered them faster and better.
+  When an existing implementation is the behavioral reference, lead immediately with a semantics map containing source behavior with excerpts, each behavior's target-stack mapping, and every non-literal translation point.
+  Do not port until sign-off; stage 2 carries the detailed reference technique.
 - **Every artifact assembles the reply.** End each artifact with the user's next
   message pre-drafted: steal/skip chips, resonate checkboxes, a decisions table,
   a copyable sharpened prompt. Their reaction becomes their next message with
