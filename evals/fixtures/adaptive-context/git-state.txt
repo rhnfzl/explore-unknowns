@@ -4,4 +4,5 @@ Branch change: atomic temporary-file replacement became a direct write in reposi
 Changed test: only the write_draft unit test was updated.
 Missing coverage: interrupted writes, recovery reads, and cross-tab writes.
 Task boundary: restore safe writer behavior and verify its autosave and recovery impact.
-Pre-existing adjacent findings: draft_metrics and cleanup_old_drafts were not changed by this branch and are outside the task boundary.
+Pre-existing adjacent finding: draft_metrics expects writer metadata this branch does not return; it was not changed by this branch and is outside the task boundary.
+Pre-existing serious risk: cleanup_old_drafts deletes the recovery backup before validating current JSON; it was not changed by this branch and is an outside-scope data-loss risk.
