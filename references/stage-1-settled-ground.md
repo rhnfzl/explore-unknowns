@@ -91,13 +91,13 @@ codified. It only surfaces the gap.
   verify without the reader wading through code names. Define the first coined
   term you reach for (for example what a "reconciler" or an "idempotency key"
   actually is) before you lean on it.
-- Declare the artifact tier (artifact-tier or inline-tier). A map is a committed
-  artifact only when there are decisions worth aiding. See stage 5. On an
-  artifact-tier full walk, open the map file skeleton now (the four quadrant
-  sections, empty) and append to it as each stage closes, so a long walk that
-  gets compacted or interrupted does not lose its accumulated state. Express
-  and direct entrances reuse the task's map or start the partial map defined in
-  stage 5. Inline-tier work stays in the conversation, no file.
+- Declare the artifact tier (artifact-tier or inline-tier) using the observable
+  predicates in stage 5. On an artifact-tier full walk, open the map file
+  skeleton now (the four quadrant sections, empty) and append to it as each stage
+  closes, so a long walk that gets compacted or interrupted does not lose its
+  accumulated state. Express and direct entrances reuse the task's map or start
+  the partial map defined in stage 5. Inline-tier work stays in the conversation,
+  no file.
 - On a full pre-build walk, name the stages ahead, one line each. On an express
   entrance, name only its short route. A direct entrance names its current phase
   and handoff, not the pre-build stages.

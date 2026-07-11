@@ -11,18 +11,21 @@ polishes it rather than building it from scratch.
 
 The tier was declared back in stage 1.
 
-- **Artifact-tier** (architecture-changing, build-queue, large post-build, or
-  merge-readiness work): finish or create the committed page with the
-  **human-html** skill, and draw the four-quadrant map diagram with
-  **excalidraw-mcp**. Follow the profile for where it lands and how it is
-  indexed, and use the task-scoped name defined in `after-the-walk.md`. Before
-  hand-over, run the second-eye pass the profile
-  describes (an adversarial read asking what the map missed and which claim
-  lacks evidence); if the reviewer is unavailable, note that on the map and
-  proceed.
-- **Inline-tier** (small work): a decisions table in the reply, no committed
-  file. The "every artifact assembles the reply" move still applies, it is just
-  the reply itself.
+- **Artifact-tier:** use for build-queue work; when merge readiness or
+  stakeholder buy-in is requested; when the task or change crosses an
+  architecture, data, security, cost, or user-visible boundary; or when a
+  durable reviewer handoff is needed. Finish or create the committed page with
+  the **human-html** skill, and draw the four-quadrant map diagram with
+  **excalidraw-mcp**. Follow the profile for where it lands and how it is indexed,
+  and use the task-scoped name defined in `after-the-walk.md`. Before hand-over,
+  run an adversarial second-eye self-review of the map asking what it missed and
+  which claim lacks evidence. This reviews the map artifact, not the code or
+  change. Follow any extra profile instructions; if the reviewer is unavailable,
+  note that on the map and proceed.
+- **Inline-tier:** use only for low-risk internal work when none of the
+  artifact-tier predicates applies. Keep the decisions table in the reply, with
+  no committed file. The "every artifact assembles the reply" move still applies,
+  it is just the reply itself.
 
 ## Full and partial maps
 

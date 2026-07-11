@@ -1,9 +1,9 @@
 # After the walk
 
-Use this reference when work is already Mid-build or Post-build, whether a
-pre-build map exists or the user enters directly. Do not replay the five-stage
-pre-build walk. Run stage 1's scan contract, then reuse the task's existing map
-or apply stage 5's phase-stamped partial-map contract.
+Use this reference after the direct phase router in SKILL.md selects Mid-build
+or Post-build, whether a pre-build map exists or the user enters directly. Do
+not replay the five-stage pre-build walk. Run stage 1's scan contract, then reuse
+the task's existing map or apply stage 5's phase-stamped partial-map contract.
 
 ## Artifact identity
 
@@ -23,9 +23,7 @@ different task's file.
 
 When implementation is already underway:
 
-Use artifact-tier when the deviation touches architecture, data, security, cost,
-or user-visible behavior, or when a durable reviewer handoff is needed. A small,
-low-risk deviation may stay inline.
+Use the artifact tier selected by stage 5's observable predicates.
 
 1. Declare the Mid-build entrance and artifact tier. Reuse the task's map when
    present. Otherwise create the phase-stamped partial map from stage 5 using
@@ -49,9 +47,9 @@ map, ledger, and the next missing decision or verification named explicitly.
 
 ## Post-build
 
-Choose the recipe from the size and requested outcome.
+Choose the recipe from stage 5's observable tier predicates.
 
-- **Artifact-tier or merge-readiness work:** reconstruct what matters from the
+- **Artifact-tier:** reconstruct what matters from the
   diff, tests, implementation ledger, map, and named sources actually available.
   Reuse the task's map or create a Post-build partial map that states those
   sources and the stages not walked. Produce the task-scoped post-build
@@ -64,11 +62,12 @@ Choose the recipe from the size and requested outcome.
   back to the relevant explanation. The explainer can also serve as the buy-in
   document: lead with the demonstrated behavior, pre-answer reviewer objections
   with evidence, and name who signs off on each remaining decision.
-- **Small inline work:** give a concise inline explanation of what changed, its
+- **Inline-tier:** give a concise inline explanation of what changed, its
   callers or consumers, whether behavior changed, and the supplied verification.
   Do not require a formal artifact or quiz. Offer a lightweight understanding
   check only when meaningful uncertainty remains.
 
-This is an understanding and unknowns gate, not a code review or merge action.
+This is an understanding and unknowns gate, not a code or change review or merge
+action.
 Follow [the skill's scope boundary](../SKILL.md#rules), and point to the
 workspace's own build, review, and merge skills for those actions.

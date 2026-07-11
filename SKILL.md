@@ -148,19 +148,24 @@ skill's vocabulary.
   stage 5.
 - **Interview me** ("interview me", "grill me on this"). Stage 1 lite plus stage
   2. Reuse an existing map or finish with the same partial-map contract.
-- **Mid-build direct.** When implementation is already underway, run the scan
-  contract from stage 1 without presenting it as a walked stage, then follow the
-  Mid-build recipe in `after-the-walk.md`. Reuse the task's map when it exists;
-  otherwise start a mid-build partial map. Do not replay the five pre-build
-  stages.
-- **Post-build direct.** When the change already exists, run the same scan
-  contract, then follow the Post-build recipe in `after-the-walk.md`. Reuse the
-  task's map when it exists; otherwise reconstruct a post-build partial map from
-  the evidence available. Do not replay the five pre-build stages.
 - **Too big for one session.** When the full walk finds the effort will not fit
   in one agent session, stop and hand the settled ground plus open decisions to
   the **wayfinder** skill, which charts the work as tickets on the issue tracker.
   Wayfinder sits above this walk, it is not a stage inside it.
+
+For a direct phase entrance, use the first matching rule:
+
+1. When the user explicitly requests explanation, stakeholder buy-in, or merge
+   readiness for an existing change, select **Post-build direct**.
+2. Otherwise, while implementation or its relevant verification is actively
+   incomplete or changing, select **Mid-build direct**.
+3. Otherwise, when implementation and its relevant verification are complete,
+   select **Post-build direct**.
+
+Both direct entrances run the stage 1 scan contract without presenting it as a
+walked stage, then follow their recipe in `after-the-walk.md`. Reuse the task's
+map when it exists or start the phase-stamped partial map. Do not replay the five
+pre-build stages.
 
 The selected entrance is complete only when its map and handoff are in the
 user's hands. A full pre-build walk finishes with the full map. Every express or
@@ -219,5 +224,6 @@ as a text sketch. The walk degrades, it never stalls.
   artifact, not just committed docs. Re-read them before you send.
 - Use no em dashes in replies or artifacts.
 - Stop at every stage boundary that needs the user's reaction. This skill maps
-  and hands off unknowns. It does not implement, review, merge, or claim
-  authority to merge.
+  and hands off unknowns. It does not implement, perform code or change review,
+  merge, or claim authority to merge. That boundary preserves the map artifact's
+  adversarial second-eye self-review in stage 5.

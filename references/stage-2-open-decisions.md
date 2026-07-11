@@ -49,8 +49,12 @@ about code they have not first seen explained in plain words.
      user-visible behavior is never defaulted.
 
 **Done when** every named question is closed one of those ways, in front of the
-user. Announce the stage closed (a small decisions table recaps it well) before
-crossing into stage 3.
+user. Then exit by entrance:
+
+- **Full pre-build walk:** announce the stage closed (a small decisions table
+  recaps it well), then cross into stage 3.
+- **Interview express:** finish the stamped partial map and handoff from stage 5,
+  then stop. Do not enter stage 3.
 
 ## When the effort is bigger than one session
 
