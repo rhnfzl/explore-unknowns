@@ -134,10 +134,11 @@ workspace. Ship only the example.
 ## Trust
 
 - No telemetry, no analytics, no phone-home.
-- No executable code. The skill is Markdown plus one JSON file of evals; installing copies
-  files, it does not run anything.
-- No network calls. Any research the walk suggests uses your own agent's tools, under your
-  control.
+- No automatic execution. The installed skill is declarative Markdown and JSON. This
+  repository also carries inert Python eval fixtures and static HTML review documents, but
+  it has no install hook, command, or bundled runtime.
+- No bundled network client. The review documents are self-contained, and any research the
+  walk suggests uses your own agent's tools under your control.
 - Local by default. Maps are self-contained files in your workspace; sharing is an explicit
   act. See [SECURITY.md](SECURITY.md).
 

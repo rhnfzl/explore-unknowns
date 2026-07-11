@@ -102,9 +102,7 @@
     code { background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 2px 5px; font-family: var(--mono); font-size: .88em; overflow-wrap: anywhere; }
     pre { background: #0f172a; color: #e2e8f0; border-radius: var(--radius); padding: 14px; overflow: auto; border: 1px solid var(--line); }
     pre code { background: transparent; border: 0; color: inherit; }
-    .mermaid svg { max-width: 100%; height: auto; }
-    .mermaid:not([data-processed]) { font-family: var(--mono); font-size: var(--fs-sm); white-space: pre; overflow-x: auto; background: var(--surface-2); border: 1px dashed var(--line-strong); border-radius: var(--radius); padding: var(--s-6); color: var(--muted); }
-    /* shipped diagram: inline SVG in a scroll wrapper, mermaid/source kept in an adjacent <details>.
+    /* shipped diagram: inline SVG in a scroll wrapper, source kept in an adjacent <details>.
        The wrapper's overflow-x contains a too-wide diagram to its own scrollbar instead of the page. */
     figure.diagram { margin: var(--s-7) 0; }
     .diagram-scroll { overflow-x: auto; }
@@ -292,25 +290,6 @@
       details:not([open])::details-content { content-visibility: visible; display: block; }
     }
   </style>
-<script type="module">
-    /* Self-contained by default: fetch Mermaid from the CDN ONLY if this page actually has a
-       diagram. A diagram-free artifact makes ZERO network calls and renders fully offline; add
-       a <div class="mermaid"> later and it still renders (the guard checks the DOM at load). */
-    if (document.querySelector(".mermaid")) {
-      const { default: mermaid } = await import("https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.esm.min.mjs");
-      /* Pick the palette at load from the resolved theme (data-theme, else the OS preference).
-         Diagrams render to static SVG, so this matches the page on load; a mid-session toggle
-         re-themes them on the next reload. Keep both sets in sync with the :root light/dark tokens. */
-      const _root = document.documentElement;
-      const _dark = _root.dataset.theme ? _root.dataset.theme === "dark"
-                                        : window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const _lightVars = { primaryColor: "#eef5fb", primaryBorderColor: "#b9d5ec", primaryTextColor: "#172033", lineColor: "#5a6577", fontFamily: "inherit", fontSize: "14px" };
-      const _darkVars = { primaryColor: "#152740", primaryBorderColor: "#2c4a6b", primaryTextColor: "#e8edf5", lineColor: "#96a2b5", fontFamily: "inherit", fontSize: "14px" };
-      mermaid.initialize({ startOnLoad: false, securityLevel: "loose", theme: "base",
-        themeVariables: _dark ? _darkVars : _lightVars });
-      await mermaid.run();   /* module scripts defer, so the DOM is parsed; run() renders every .mermaid once */
-    }
-  </script>
 </head>
 <body data-human-html-artifact="true">
   <button class="theme-toggle" type="button" aria-label="Switch theme" title="Toggle light / dark"></button>
@@ -357,19 +336,56 @@
     <section id="approach" class="section">
       <h2>Approach</h2>
       <p>One shared map survives across three phase-aware entrances. A direct mid-build or post-build invocation reuses that map when present and otherwise creates a clearly stamped partial reconstruction, so reconstructed knowledge never looks like a completed pre-build walk.</p>
-      <div class="mermaid">
-flowchart LR
-  S[Scan available context] --> P{Current phase}
-  P -->|Pre-build| W[Five-stage quadrant walk]
-  P -->|Mid-build| L[Task-scoped implementation ledger]
-  P -->|Post-build artifact-tier| E[Explainer and quiz]
-  P -->|Post-build inline-tier| I[Concise inline explanation]
-  W --> M[One prioritized unknowns map]
-  L --> M
-  E --> M
-  I --> M
-  M --> H[Portable handoff]
-      </div>
+      <figure class="diagram">
+        <div class="diagram-scroll" role="img" aria-labelledby="phase-flow-title phase-flow-desc">
+          <svg viewBox="0 0 1160 430" xmlns="http://www.w3.org/2000/svg">
+            <title id="phase-flow-title">Phase-aware unknowns workflow</title>
+            <desc id="phase-flow-desc">Available context is scanned, then the current phase selects a pre-build walk, mid-build ledger, artifact-tier post-build explainer and quiz, or inline post-build explanation. Every route updates one prioritized map and produces a portable handoff.</desc>
+            <defs>
+              <marker id="phase-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--muted)"/>
+              </marker>
+            </defs>
+            <g fill="none" stroke="var(--muted)" stroke-width="2" marker-end="url(#phase-arrow)">
+              <path d="M190 215 H260"/>
+              <path d="M380 215 C430 215 420 65 480 65"/>
+              <path d="M380 215 C430 215 420 145 480 145"/>
+              <path d="M380 215 C430 215 420 225 480 225"/>
+              <path d="M380 215 C430 215 420 305 480 305"/>
+              <path d="M710 65 C755 65 750 185 790 185"/>
+              <path d="M710 145 C755 145 750 195 790 195"/>
+              <path d="M710 225 C755 225 750 205 790 205"/>
+              <path d="M710 305 C755 305 750 215 790 215"/>
+              <path d="M970 200 H1020"/>
+            </g>
+            <g fill="var(--surface-2)" stroke="var(--accent-line)" stroke-width="2">
+              <rect x="20" y="175" width="170" height="80" rx="12"/>
+              <path d="M320 165 L380 215 L320 265 L260 215 Z"/>
+              <rect x="480" y="25" width="230" height="80" rx="12"/>
+              <rect x="480" y="105" width="230" height="80" rx="12"/>
+              <rect x="480" y="185" width="230" height="80" rx="12"/>
+              <rect x="480" y="265" width="230" height="80" rx="12"/>
+              <rect x="790" y="155" width="180" height="90" rx="12"/>
+              <rect x="1020" y="170" width="130" height="60" rx="12"/>
+            </g>
+            <g fill="var(--ink)" font-family="system-ui, sans-serif" font-size="15" text-anchor="middle">
+              <text x="105" y="207"><tspan x="105">Scan available</tspan><tspan x="105" dy="20">context</tspan></text>
+              <text x="320" y="211"><tspan x="320">Current</tspan><tspan x="320" dy="19">phase</tspan></text>
+              <text x="595" y="57"><tspan x="595">Pre-build</tspan><tspan x="595" dy="20">five-stage walk</tspan></text>
+              <text x="595" y="137"><tspan x="595">Mid-build</tspan><tspan x="595" dy="20">task-scoped ledger</tspan></text>
+              <text x="595" y="217"><tspan x="595">Post-build artifact-tier</tspan><tspan x="595" dy="20">explainer and quiz</tspan></text>
+              <text x="595" y="297"><tspan x="595">Post-build inline-tier</tspan><tspan x="595" dy="20">concise explanation</tspan></text>
+              <text x="880" y="190"><tspan x="880">One prioritized</tspan><tspan x="880" dy="20">unknowns map</tspan></text>
+              <text x="1085" y="207"><tspan x="1085">Portable</tspan><tspan x="1085" dy="19">handoff</tspan></text>
+            </g>
+          </svg>
+        </div>
+        <figcaption>Each entrance starts from the current phase, updates the shared map, and finishes with a handoff.</figcaption>
+        <details class="diagram-src">
+          <summary>Flow source</summary>
+          <pre><code>scan context -&gt; current phase -&gt; phase-specific route -&gt; prioritized map -&gt; handoff</code></pre>
+        </details>
+      </figure>
       <h3>Locked behavior</h3>
       <ul>
         <li>Scan the repository, Git state, territory profile, memory, and already named sources first. Ask for external context only when relevant context remains missing.</li>
