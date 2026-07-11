@@ -323,7 +323,7 @@
       <span><strong>Kind</strong> plan</span>
       <span><strong>Created</strong> 2026-07-11</span>
       <span><strong>Owner</strong> Rehan</span>
-      <span><strong>Status</strong> Approved for implementation</span>
+      <span><strong>Status</strong> Implemented; behavioral evals passed</span>
       <span><strong>Read time</strong> ~7 min</span>
       <span><strong>Source</strong> Thariq Shihipar talk, official article, repository audit, and user decisions</span>
     </div>
@@ -362,10 +362,12 @@ flowchart LR
   S[Scan available context] --> P{Current phase}
   P -->|Pre-build| W[Five-stage quadrant walk]
   P -->|Mid-build| L[Task-scoped implementation ledger]
-  P -->|Post-build| E[Explainer and quiz]
+  P -->|Post-build artifact-tier| E[Explainer and quiz]
+  P -->|Post-build inline-tier| I[Concise inline explanation]
   W --> M[One prioritized unknowns map]
   L --> M
   E --> M
+  I --> M
   M --> H[Portable handoff]
       </div>
       <h3>Locked behavior</h3>
@@ -373,7 +375,7 @@ flowchart LR
         <li>Scan the repository, Git state, territory profile, memory, and already named sources first. Ask for external context only when relevant context remains missing.</li>
         <li>Trace callers, consumers, and dependencies until the behavior's origin and impact are explained. There is no arbitrary hop limit, but the trace does not branch into unrelated auditing.</li>
         <li>Keep all encountered discoveries in the four quadrants. Label each one <strong>Changes this task</strong>, <strong>Nearby finding</strong>, or <strong>Urgent outside scope</strong>.</li>
-        <li>Require a passed quiz for artifact-tier or merge-readiness work. Small inline work records missed answers as understanding gaps without blocking.</li>
+        <li>Require a passed quiz for artifact-tier or merge-readiness work. Low-risk inline work has no formal quiz; offer a lightweight understanding check only when meaningful uncertainty remains.</li>
         <li>Use one task slug across <code>YYYY-MM-DD-unknowns-map-&lt;task&gt;.html</code>, <code>YYYY-MM-DD-implementation-notes-&lt;task&gt;.md</code>, and <code>YYYY-MM-DD-post-build-explainer-&lt;task&gt;.html</code>. Add a numeric suffix for a different task collision.</li>
       </ul>
     </section>
