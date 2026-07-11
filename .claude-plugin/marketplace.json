@@ -5,7 +5,7 @@
     {
       "name": "explore-unknowns",
       "source": "./",
-      "description": "Map the unknowns of a task before you build it: a five-stage interview that hands you a four-quadrant map (settled ground, open decisions, taste, and landmines) you keep."
+      "description": "Find and carry a task's unknowns before, during, and after implementation through a phase-aware four-quadrant map and handoff."
     }
   ]
 }

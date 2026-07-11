@@ -3,7 +3,7 @@
   "groupings": [
     {
       "title": "explore-unknowns",
-      "description": "Map the unknowns of a task before, during, and after you build it. A five-stage interview that hands you a four-quadrant map (settled ground, open decisions, taste, and landmines) you keep, portable to any project through one swappable profile file.",
+      "description": "Find and carry a task's unknowns before, during, and after implementation through a phase-aware four-quadrant map and handoff.",
       "skills": ["explore-unknowns"]
     }
   ]
