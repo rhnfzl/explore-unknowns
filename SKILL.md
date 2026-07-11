@@ -149,10 +149,13 @@ skill's vocabulary.
 - **Full pre-build walk** (default for build-queue and architecture-changing
   work that has not started). All five stages in order.
 - **Blindspot pass** ("do a blindspot pass", "what am I missing"). Stage 1 lite
-  plus stage 4. Reuse an existing map or finish with the partial-map contract in
-  stage 5.
+  plus stage 4. Append a stamped `PARTIAL` phase update to an existing map, or
+  create the partial map when none exists, then finish with stage 5's
+  phase-appropriate handoff.
 - **Interview me** ("interview me", "grill me on this"). Stage 1 lite plus stage
-  2. Reuse an existing map or finish with the same partial-map contract.
+  2. Append a stamped `PARTIAL` phase update to an existing map, or create the
+  partial map when none exists, then finish with stage 5's phase-appropriate
+  handoff.
 - **Too big for one session.** When the full walk finds the effort will not fit
   in one agent session, stop and hand the settled ground plus open decisions to
   the **wayfinder** skill, which charts the work as tickets on the issue tracker.

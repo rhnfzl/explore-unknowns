@@ -68,7 +68,11 @@ a sharp edge.
   already encountered discovery outside the task boundary once as `Nearby
   finding` or `Urgent outside scope` under stage 5's precedence. Do not trace it
   further or add it to the implementation handoff unless the user expands scope.
-  When external context is still missing, record the item as OPEN in its
-  quadrant without asking there. Put the actual lettered request for the user's
-  answer after every finding card and the handoff, so the visible output is
-  scan-first too.
+  When external context needed for a finding's decision is still missing,
+  record the item as OPEN in its quadrant without asking there. Awareness-only
+  findings and `Urgent outside scope` findings stay sharp edges without
+  questions. After all finding cards and the handoff, put only the highest-impact
+  decision-requiring finding's actual lettered request for the user's answer.
+  Leave the other decision-requiring findings OPEN and name them as queued, so
+  the visible output stays scan-first and the interview asks one question at a
+  time.

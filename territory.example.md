@@ -74,7 +74,7 @@ Whatever the source, its output enters the map only as a flagged advisory class,
 - Tier, declared in stage 1. Apply the entrance's objective gate, then use its matching form.
   - Artifact-tier output: build the map as a committed document, with a diagram. State your format and location, for example `<your-docs-path>`.
   - Inline-tier output: a decisions table in the reply, nothing committed.
-- Post-build tier gate. Use artifact-tier when merge readiness or stakeholder buy-in is requested, the change crosses an architecture, data, security, cost, or user-visible boundary, or a durable reviewer handoff is needed. Inline applies only to low-risk internal work with none of those conditions.
+- Post-build tier gate. Delegate tier selection to [stage 5](references/stage-5-the-map.md). Inline applies only when stage 5 selects it for low-risk internal work.
 - Post-build quiz gate. Artifact-tier or merge-readiness work produces an explainer and a quiz on the non-obvious behavior, inherited risks, unverified assumptions, and what to watch after deploy. Record the result in `<your-post-build-gate-location>`. Merge readiness remains blocked while a merge-critical verification gap is open or a merge-critical question is unanswered or incorrect. Inline work has no required quiz.
 - Second eye, artifact-tier only. Before hand-over, run an adversarial pass on the map: a fresh agent or a colleague tries to break its claims. Name your preferred reviewer or tool here: `<your-second-eye>`.
 - Pipeline handoff. If the map feeds a build process, say what shape the handoff takes. A good generic set:
