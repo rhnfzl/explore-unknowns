@@ -5,12 +5,13 @@
       "id": 0,
       "name": "blindspot-unfamiliar-auth",
       "prompt": "I need to add a new permission check to our web app's session middleware, but I honestly don't know how auth currently flows through the request handlers, or where the session state is stored. Before I touch anything, help me figure out what I'm missing and what I actually need to decide.",
-      "expected_output": "Opens the walk instead of coding: names the entrance (full walk or blindspot pass), scans the codebase and cites real files with line refs for settled ground, captures ground state, names the stages ahead, surfaces the questions that must be decided, and does NOT start writing the implementation. If a territory profile is present it leans on the project's memory store and graph and flags the profile's landmine families.",
+      "expected_output": "Opens the walk instead of coding: names the entrance (full walk or blindspot pass), maps settled ground and unknowns, surfaces the decisions that must be made, and does not start writing the implementation. Because no repository files or evidence are supplied, it states that limitation and does not invent paths, line references, memory, graph, or territory claims.",
       "assertions": [
         "Opens by mapping the task (settled ground, what is unknown, what to decide) instead of starting to implement",
-        "Cites at least one real file as settled ground (a concrete path, ideally with a line reference)",
+        "States that repository evidence is unavailable because no files or repository access were supplied",
+        "Does not invent file paths, line references, memory, graph, or territory evidence",
         "Surfaces named decisions or questions for the user to answer, not just a summary of the code",
-        "Flags at least one landmine family (a hidden trap the change could trip, for example an environment-specific config flag or a boundary two components disagree about)",
+        "Names at least one auth landmine to investigate, while clearly marking it as unverified rather than settled fact",
         "Names the walk shape (declares the entrance and/or the stages ahead)",
         "Contains zero em dashes",
         "Does not write implementation code for the new permission check"
@@ -42,6 +43,107 @@
         "Defers writing TypeScript until the semantics are mapped and confirmed",
         "Degrades to a general walk: does not fabricate project-specific memory, graph, or territory claims when no profile applies",
         "Names the walk shape (declares the entrance and/or the stages ahead)",
+        "Contains zero em dashes"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "mid-build-diverged-plan",
+      "prompt": "Implementation is already underway and there was no pre-build unknowns map. The fixed file implementation-notes.md belongs to another task, so do not replace it. Planned behavior: the customer importer should reject any row with a missing email before writing. Actual edge case: legacy rows can have no email but do have a stable external_id, so the implementation now preserves those rows and queues enrichment. Reason: rejecting them would drop existing customers. Risk: incorrect external_id matching could duplicate a customer across tenants. New unknown: whether external_id is unique across tenants. Verification so far: missing-email unit tests pass, but cross-tenant collisions are not covered. Enter the exploration workflow from where I am now and preserve enough context for the rest of this task.",
+      "expected_output": "Declares a mid-build entrance without replaying the full five-stage walk. Creates or reuses a phase-stamped partial map with a date-kind-task filename and a separate task-scoped implementation ledger. The ledger records the planned rejection, the actual preserve-and-enrich path, why it changed, the duplicate-customer risk, the cross-tenant uniqueness unknown, and the verification gap, while leaving the unrelated implementation-notes.md untouched.",
+      "assertions": [
+        "Explicitly declares a mid-build entrance",
+        "Does not restart or replay the full five-stage walk",
+        "Creates or reuses a partial unknowns map marked with the mid-build phase",
+        "Uses a date-kind-task filename for the task artifact",
+        "Creates a task-scoped implementation ledger instead of using the fixed implementation-notes.md",
+        "Records the plan to reject missing-email rows before writing",
+        "Records the actual preserve-and-enrich behavior and that rejecting legacy rows would drop customers",
+        "Records the risk that incorrect external_id matching could duplicate customers across tenants",
+        "Records external_id uniqueness as an open cross-tenant unknown",
+        "Records missing cross-tenant collision coverage as the verification gap",
+        "Never overwrites or repurposes the unrelated implementation-notes.md",
+        "Contains zero em dashes"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "post-build-large-pr-merge-readiness",
+      "prompt": "A large pull request is implemented and I want a merge-readiness review, but nobody made an unknowns map or implementation ledger. Diff summary: checkout.ts moves retry ownership from orders.ts and payments.ts into RetryCoordinator, and the old per-caller retry guards are deleted. Evidence summary: tests show network timeouts retry once, but no test covers a timeout after payment authorization. Reconstruct what matters from this evidence, then help me prove that I understand the risky parts before merge.",
+      "expected_output": "Enters post-build at the artifact tier and reconstructs a phase-stamped partial map from the supplied diff and test evidence. The map explains the retry-ownership move and treats the uncovered timeout after payment authorization as merge-critical. Produces a task-scoped explainer and quiz, and blocks merge readiness until the merge-critical questions are answered correctly.",
+      "assertions": [
+        "Declares a post-build entrance and artifact-tier treatment for the large change",
+        "Reconstructs a partial unknowns map from the supplied diff and test summaries instead of pretending a prior map exists",
+        "Marks the reconstructed map with the post-build phase",
+        "Explains that retry ownership moved from orders.ts and payments.ts into RetryCoordinator and the per-caller guards were removed",
+        "Treats the missing timeout-after-payment-authorization coverage as merge-critical",
+        "Produces a task-scoped explainer",
+        "Produces a task-scoped quiz focused on the risky or merge-critical parts",
+        "Blocks merge readiness until every merge-critical question is answered correctly",
+        "Contains zero em dashes"
+      ],
+      "files": []
+    },
+    {
+      "id": 5,
+      "name": "post-build-small-inline",
+      "prompt": "I just finished a small internal refactor: I renamed the private coerceFlag helper to parseBoolean and updated its two private callers. Behavior should be unchanged, and all 12 parser tests pass. Give me the post-build understanding pass, but keep the ceremony proportional to the change.",
+      "expected_output": "Uses the inline post-build tier and concisely explains the private helper rename, the two updated callers, the unchanged behavior, and the passing verification. Creates no formal artifact, requires no quiz, and offers a lightweight understanding check only if meaningful uncertainty remains.",
+      "assertions": [
+        "Declares or clearly uses the inline post-build tier",
+        "Provides a concise inline explanation of the coerceFlag to parseBoolean rename and the two updated private callers",
+        "Notes that behavior is unchanged",
+        "Reports that all 12 parser tests pass",
+        "Does not create or require a formal explainer artifact",
+        "Does not impose a mandatory quiz",
+        "Offers a lightweight understanding check only when uncertainty remains",
+        "Contains zero em dashes"
+      ],
+      "files": []
+    },
+    {
+      "id": 6,
+      "name": "adaptive-context-and-blindspots",
+      "prompt": "Run an adaptive blindspot pass. Inspect every supplied file before asking me anything. Use repository.py for code and trace evidence, git-state.txt for branch state, territory-profile.md for landmines and boundaries, memory.md for prior evidence, and decision-source.md for settled and missing decisions. Ground the map in those files, cite only evidence you actually inspected, ask for external context only when a relevant decision remains missing, and stop before unrelated branches.",
+      "expected_output": "Reads and uses all five fixture files before asking only about the missing navigation decision. Explains the direct-write origin and its impact on autosave and recovery, then stops before UI theme code. Retains every encountered finding in the four-quadrant map: the direct-write risk is labeled Changes this task, the stale metrics consumer is labeled Nearby finding, and unsafe backup cleanup is labeled Urgent outside scope because it risks data loss. Cites only supplied fixture paths and facts.",
+      "assertions": [
+        "Reads repository.py and uses its write_draft, autosave, recover, draft_metrics, and cleanup_old_drafts evidence before asking the user for context",
+        "Reads git-state.txt and uses its direct-write change and missing-coverage evidence before asking the user for context",
+        "Reads territory-profile.md and uses its persistence landmines and trace boundary before asking the user for context",
+        "Reads memory.md and uses the prior partial-JSON draft-loss evidence before asking the user for context",
+        "Reads decision-source.md and distinguishes its settled rules from its missing external decision before asking the user for context",
+        "Asks for external context only about whether failed autosave blocks navigation or warns and continues",
+        "Traces write_draft through autosave and recover to explain the direct-write change's origin and impact",
+        "Stops before unrelated UI theme code",
+        "Keeps every encountered fixture finding visible in the four-quadrant map",
+        "Labels the direct-write risk Changes this task",
+        "Labels the stale draft_metrics consumer Nearby finding",
+        "Labels unsafe backup cleanup Urgent outside scope because it risks data loss",
+        "Cites only supplied fixture paths and includes no fabricated path or line citations",
+        "Contains zero em dashes"
+      ],
+      "files": [
+        "evals/fixtures/adaptive-context/repository.py",
+        "evals/fixtures/adaptive-context/git-state.txt",
+        "evals/fixtures/adaptive-context/territory-profile.md",
+        "evals/fixtures/adaptive-context/memory.md",
+        "evals/fixtures/adaptive-context/decision-source.md"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "interview-close-high-impact-unknowns",
+      "prompt": "The map has three decisions. HIGH ANSWERED: retries after payment authorization must reuse the original idempotency key, and the gateway guarantees that the same key cannot create a second charge. MEDIUM OPEN: whether timeout metrics must be split by payment provider. LOW OPEN: whether the internal helper name should change. In one response, update the map from my answer and continue the interview without turning it into a questionnaire.",
+      "expected_output": "Marks the idempotency decision visibly CLOSED with the supplied answer. Keeps the metrics and helper-name decisions visibly OPEN, then asks exactly one question about the metrics decision as the next highest-impact OPEN item. Leaves the lower-impact helper-name decision queued and does not ask about it yet.",
+      "assertions": [
+        "Marks the payment idempotency decision visibly CLOSED on the map",
+        "Records that retries reuse the original idempotency key and cannot create a second charge",
+        "Shows the timeout-metrics and helper-name decisions as OPEN",
+        "Asks exactly one question about timeout metrics as the next highest-impact OPEN decision",
+        "Keeps the lower-impact helper-name decision queued as OPEN",
+        "Does not ask about the helper-name decision in this response",
         "Contains zero em dashes"
       ],
       "files": []

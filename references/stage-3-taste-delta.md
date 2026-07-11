@@ -14,9 +14,12 @@ their taste. Do not re-elicit it.
 - Load the relevant standing rules from memory in stage 1 and treat them as
   settled. In stage 3, probe only for taste that memory does not already hold.
 - When the walk surfaces new durable taste, close the stage by proposing it to
-  memory (see [territory.md](../territory.md)). Stage 3 is not just an interview,
-  it is a memory-write loop that compounds across walks: each walk makes the next
-  one ask fewer questions.
+  the configured memory store or optional local `territory.md`. If no local
+  profile exists, copy [territory.example.md](../territory.example.md) to
+  `territory.md` before adding project-specific durable taste; never write those
+  rules into the public template. Stage 3 is not just an interview, it is a
+  memory-write loop that compounds across walks: each walk makes the next one
+  ask fewer questions.
 - With no profile, there is no memory to lean on, so probe taste from scratch.
 
 ## Do not defer the concrete reaction

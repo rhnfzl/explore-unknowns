@@ -18,7 +18,8 @@ description: >-
   mechanical tasks with clear acceptance criteria, single-fact lookups, pure
   debugging of a known symptom, or pure code review, those have their own tools.
   Do not use it to run the build itself; the map is the deliverable and
-  implementation is a separate task that starts after hand-over.
+  implementation remains a separate task, whether it has not started or is
+  already underway.
 license: MIT
 metadata:
   version: "1.0.0"
@@ -32,11 +33,13 @@ the map. The codebase, the domain, and the user's real intent are the territory.
 The gap between them is the unknowns. An unknown found before code is written
 costs minutes. The same unknown found three PRs later costs the three PRs.
 
-This skill is a guided conversation: the **quadrant walk**. You and the user
-fill in a four-quadrant map of the task, one quadrant across each of the first
-four stages, then a fifth stage hands it over and the user walks away holding the
-completed map. The map is the deliverable. Implementation is a different task
-that starts only after the map is handed over.
+This skill maps unknowns from the phase the user is actually in. Before a build,
+its full entrance is a guided conversation: the **quadrant walk**. You and the
+user fill in a four-quadrant map of the task, one quadrant across each of the
+first four stages, then a fifth stage hands it over. During or after a build,
+direct entrances reuse that map or create an honest phase-stamped partial map
+instead of replaying pre-build stages. The map or partial fragment is the
+deliverable. Implementation is a separate task.
 
 **Do not walk when the walk would just be ceremony.** Skip it, and say why in one
 line, when the task is trivial, mechanical, or already has unambiguous acceptance
@@ -93,18 +96,24 @@ file, not by threading options through the walk.
   stage's scheduled turn to see anything. That wait is the single most common
   way this walk fails: it stalls on scoping questions when a rendered option
   would have answered them faster and better.
+  When an existing implementation is the behavioral reference, lead immediately
+  with a semantics map. In the first response, explicitly promise all three outputs:
+  source behavior with excerpts, a target-stack mapping for each behavior, and
+  every non-literal translation point. A generic evidence column is not enough.
+  Do not port until sign-off; stage 2 carries the detail.
 - **Every artifact assembles the reply.** End each artifact with the user's next
   message pre-drafted: steal/skip chips, resonate checkboxes, a decisions table,
   a copyable sharpened prompt. Their reaction becomes their next message with
   near-zero typing.
 
-## The walk
+## The pre-build walk
 
-Five stages, walked in order, one at a time. **When you enter a stage, read its
-reference file and follow it.** Name the current stage as you go so the user
-always knows where they stand, and finish the stage in front of you before
-opening the next. Each stage carries a plain name, and the map defines the
-underlying quadrant term once, in plain words, the first time it appears.
+The full pre-build entrance has five stages, walked in order, one at a time.
+**When you enter a stage, read its reference file and follow it.** Name the
+current stage as you go so the user always knows where they stand, and finish
+the stage in front of you before opening the next. Each stage carries a plain
+name, and the map defines the underlying quadrant term once, in plain words, the
+first time it appears.
 
 1. **Settled ground** (the known knowns) ->
    [stage-1-settled-ground.md](references/stage-1-settled-ground.md). Scan the
@@ -127,25 +136,49 @@ underlying quadrant term once, in plain words, the first time it appears.
    four-quadrant map, plus the handoff the map feeds into. The walk's only
    done-condition.
 
-When the user moves on to build, review, or merge what the walk mapped, read
-[after-the-walk.md](references/after-the-walk.md). The map lives on past
-planning.
+For a direct Mid-build or Post-build entrance, or when a pre-build map moves
+into either phase, read [after-the-walk.md](references/after-the-walk.md). The
+map lives on past planning.
 
-## Entrances
+## Entrances and completion
 
 Declare the entrance in your first reply so the user knows the shape ahead.
+Choose from observable phase evidence, not from whether the user knows the
+skill's vocabulary.
 
-- **Full walk** (default for build-queue and architecture-changing work). All
-  five stages in order.
+- **Full pre-build walk** (default for build-queue and architecture-changing
+  work that has not started). All five stages in order.
 - **Blindspot pass** ("do a blindspot pass", "what am I missing"). Stage 1 lite
-  plus stage 4. Stamp the map fragment with what was skipped so a partial map
-  never reads as complete.
+  plus stage 4. Append a stamped `PARTIAL` phase update to an existing map, or
+  create the partial map when none exists, then finish with stage 5's
+  phase-appropriate handoff.
 - **Interview me** ("interview me", "grill me on this"). Stage 1 lite plus stage
-  2. Same stamping rule.
+  2. Append a stamped `PARTIAL` phase update to an existing map, or create the
+  partial map when none exists, then finish with stage 5's phase-appropriate
+  handoff.
 - **Too big for one session.** When the full walk finds the effort will not fit
   in one agent session, stop and hand the settled ground plus open decisions to
   the **wayfinder** skill, which charts the work as tickets on the issue tracker.
   Wayfinder sits above this walk, it is not a stage inside it.
+
+For a direct phase entrance, use the first matching rule:
+
+1. When the user explicitly requests explanation, stakeholder buy-in, or merge
+   readiness for an existing change, select **Post-build direct**.
+2. Otherwise, while implementation or its relevant verification is actively
+   incomplete or changing, select **Mid-build direct**.
+3. Otherwise, when implementation and its relevant verification are complete,
+   select **Post-build direct**.
+
+Both direct entrances run the stage 1 scan contract without presenting it as a
+walked stage, then follow their recipe in `after-the-walk.md`. Reuse the task's
+map when it exists or start the phase-stamped partial map. Do not replay the five
+pre-build stages.
+
+The selected entrance is complete only when its map and handoff are in the
+user's hands. A full pre-build walk finishes with the full map. Every express or
+direct entrance finishes with the explicitly partial map fragment defined in
+stage 5 and a handoff for its current phase.
 
 ## What the walk owns and what it delegates
 
@@ -157,9 +190,9 @@ enforced by their own tooling:
 - **The interview** (stage 2) -> the **grilling** skill. Inline-tier walks use
   `grill-me` (plain grilling). Artifact-tier walks use `grill-with-docs`, whose
   ADRs and glossary feed the map's `<dfn>` glossary.
-- **The map artifact** (artifact-tier, opened in stage 1 and finished in stage 5)
-  -> the **human-html** skill for the committed page and **excalidraw-mcp** for
-  the map diagram.
+- **The map artifact** (artifact-tier) -> the **human-html** skill for the
+  committed page and **excalidraw-mcp** for the map diagram. Its lifecycle
+  follows the full or partial contract in stage 5.
 - **Graph queries** (stage 1) -> the graph tools the profile names.
 - **Profile landmine checks** (stage 4) -> the skills the profile names for them.
 - **Deep external research** inside a stage -> **recursive-research**.
@@ -173,8 +206,9 @@ as a text sketch. The walk degrades, it never stalls.
 
 ## Rules
 
-- Walk the quadrants in order, one stage at a time, naming the current stage.
-  The walk ends with the map in the user's hands. No map, not done.
+- Walk the quadrants in order only for the full pre-build entrance. Express and
+  direct entrances follow their declared route. In every route, no map or
+  explicitly partial map fragment means not done.
 - Stages order the walk, they never embargo information. A finding that
   materially bears on a decision in flight is disclosed the moment you have it,
   then filed on the map under its quadrant. Never hold it back for its stage.
@@ -196,6 +230,8 @@ as a text sketch. The walk degrades, it never stalls.
   your `territory.md` when a profile is present.
 - When a territory profile defines writing rules, they bind every reply and
   artifact, not just committed docs. Re-read them before you send.
-- Stop at every stage boundary that needs the user's reaction. Never barrel into
-  implementation on unconfirmed guesses. Implementing is a separate task that
-  begins after the map is delivered.
+- Use no em dashes in replies or artifacts.
+- Stop at every stage boundary that needs the user's reaction. This skill maps
+  and hands off unknowns. It does not implement, perform code or change review,
+  merge, or claim authority to merge. That boundary preserves the map artifact's
+  adversarial second-eye self-review in stage 5.

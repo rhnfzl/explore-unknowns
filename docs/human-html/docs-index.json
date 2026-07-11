@@ -1,0 +1,22 @@
+{
+  "count": 1,
+  "artifacts": [
+    {
+      "date": "2026-07-11",
+      "kind": "plan",
+      "slug": "explore-unknowns-focused-correction",
+      "title": "Explore Unknowns Focused Correction",
+      "summary": "Keep the five-stage unknowns walk, add direct mid-build and post-build entrances, and verify every lifecycle path with evals.",
+      "keywords": [
+        "explore-unknowns",
+        "agent skills",
+        "lifecycle",
+        "implementation notes",
+        "evals",
+        "CodeRabbit"
+      ],
+      "source": "local",
+      "href": "2026-07-11-plan-explore-unknowns-focused-correction.html"
+    }
+  ]
+}
