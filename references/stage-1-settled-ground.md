@@ -3,9 +3,34 @@
 Your first reply shows the map as it stands: what is already settled, so the
 rest of the walk only spends the user's attention on what is not.
 
+Express and direct entrances reuse this scan contract without claiming they
+walked stage 1.
+
 ## Scan first (mostly silent)
 
-Before saying anything about the code, walk the territory.
+Before asking the user for context, inspect every source already available:
+
+- The repository files the task touches and any source files already named.
+- Git state, including the current branch, the relevant diff, and changed tests.
+- The optional local `territory.md` profile and any territory profile already
+  supplied for the task. Use
+  [territory.example.md](../territory.example.md) only as the public template,
+  never as project evidence.
+- Relevant workspace memory or notes that are available.
+- Any ticket, Slack thread, recording, document, or other source the user has
+  already named and made available.
+
+Then trace the touched behavior through its callers, consumers, dependencies,
+state changes, and boundaries for as many hops as needed to explain where it
+comes from and what it affects. Stop at a stable explained boundary. Do not
+branch into unrelated auditing. Keep every interesting discovery encountered on
+that trace in the four-quadrant map, with the priority labels defined in stage 5;
+there is no separate parking lot.
+
+Only after this scan, when a relevant fact or decision remains missing, ask for
+external context. Name the missing decision and the exact source needed, such as
+the ticket that records its acceptance rule or the recording where it was made.
+Do not add a generic invitation for more context.
 
 - **General walk:** split the code the task touches among parallel read-only
   subagents and collect what they pin down, so the opening lands fast instead of
@@ -23,9 +48,10 @@ that smells load-bearing.
 Record the starting point as a real section of the map, not a vibe:
 
 - The request as you understand it.
-- With a territory profile, the ground-state block it asks for (branch, diff
-  against the mainline, and per-env flag state when the work touches flagged
-  behavior, read from the source of truth and never guessed).
+- The relevant Git branch, diff against the mainline, and changed verification.
+- With a territory profile, any extra ground-state fields it asks for, including
+  per-environment flag state when the work touches flagged behavior. Read these
+  from the source of truth and never guess.
 
 Ground state is captured before you hypothesize anything. A map built on an
 unchecked assumption about the current state is a map of a territory that does
@@ -33,23 +59,22 @@ not exist.
 
 ## Preload what is already written down
 
-If the territory profile points at a memory or notes store, load the relevant
-topics and present them as settled ground: "your standing rules say X, applying
-unless you override". This is why the walk feels like it knows the user: it does
-not re-ask what they have already codified. It only surfaces the gap.
+Load the relevant topics from any available workspace memory or notes store,
+following the territory profile when it names one, and present them as settled
+ground: "your standing rules say X, applying unless you override". This is why
+the walk feels like it knows the user: it does not re-ask what they have already
+codified. It only surfaces the gap.
 
 ## The opening reply
 
-- Declare the entrance (full walk, blindspot pass, or interview me) so the user
-  sees the shape of the conversation.
+- Declare the selected entrance so the user sees the shape of the conversation.
 - Calibrate the explanation depth in one line. Unfamiliarity is the default, but
   how much the user already knows changes how much to explain, so surface it.
   Where memory or the profile shows the user knows this area (they built part of
   it recently), say so and offer to keep the primer light ("you worked here last
-  month, so I will skip the basics unless you want them"). Where there is no such
-  signal and the area is dense, ask the one plain question ("how well do you know
-  this corner already?"). Either way it is one line the user can correct, not a
-  blocking gate.
+  month, so I will keep the primer light"). Where there is no such signal and the
+  area is dense, default to explaining from first principles. This is a stated
+  calibration, not another question.
 - Open in plain terms (the plain-language rules apply, see SKILL.md and the
   profile). Before any file names, give a short mental model of the corner of the
   system this task touches: how it works today, in two or three sentences, with
@@ -68,20 +93,22 @@ not re-ask what they have already codified. It only surfaces the gap.
   actually is) before you lean on it.
 - Declare the artifact tier (artifact-tier or inline-tier). A map is a committed
   artifact only when there are decisions worth aiding. See stage 5. On an
-  artifact-tier walk, open the map file skeleton now (the four quadrant sections,
-  empty) and append to it as each stage closes, so a long walk that gets
-  compacted or interrupted does not lose its accumulated state. Stage 5 then
-  finishes the map rather than building it from scratch. Inline-tier walks stay
-  in the conversation, no file.
-- Name the stages ahead, one line each.
+  artifact-tier full walk, open the map file skeleton now (the four quadrant
+  sections, empty) and append to it as each stage closes, so a long walk that
+  gets compacted or interrupted does not lose its accumulated state. Express
+  and direct entrances reuse the task's map or start the partial map defined in
+  stage 5. Inline-tier work stays in the conversation, no file.
+- On a full pre-build walk, name the stages ahead, one line each. On an express
+  entrance, name only its short route. A direct entrance names its current phase
+  and handoff, not the pre-build stages.
 - If the scan already surfaced a finding that reframes the task, disclose it now
   in plain words and file it under its quadrant. Do not save it for stage 4.
-- The first stage-2 question may ride along in this same message. For a taste,
-  design, or brainstorm request, the first concrete reaction leads too: open
-  with a few distinct directions or a quick mock on plausible data in this same
-  reply, so the user reacts in their first message instead of waiting for the
-  taste stage. Nothing else jumps ahead.
+- On a full walk or interview entrance, the first stage-2 question may ride along
+  in this same message. For a taste, design, or brainstorm request, the first
+  concrete reaction leads too: open with a few distinct directions or a quick
+  mock on plausible data in this same reply, so the user reacts in their first
+  message instead of waiting for the taste stage. Nothing else jumps ahead.
 
 **Done when** the user has the settled ground with citations and ground state,
-knows which assumptions you treat as settled, knows the tier and entrance, and
-can see the stages ahead.
+knows which assumptions you treat as settled, and knows the tier and entrance.
+On a full pre-build walk they can also see the stages ahead.
