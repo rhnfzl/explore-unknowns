@@ -1,0 +1,5 @@
+Sample evaluation fixture. This is not a live Git snapshot.
+
+Branch change: atomic temporary-file replacement became a direct write in repository.py.
+Changed test: only the write_draft unit test was updated.
+Missing coverage: interrupted writes, recovery reads, and cross-tab writes.

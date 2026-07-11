@@ -106,36 +106,44 @@
     {
       "id": 6,
       "name": "adaptive-context-and-blindspots",
-      "prompt": "Run an adaptive blindspot pass using these evidence summaries. Repository: src/write-draft.ts exports writeDraft; src/autosave.ts and src/recovery.ts consume its result; src/draft-metrics.ts still reads a removed result field; src/cleanup-old-drafts.ts deletes the last backup before checking the current JSON. Git state: this branch replaces an atomic temporary-file rename with a direct write, and only the write-draft test changed. Profile: persistence landmines include interrupted writes and cross-tab concurrency. Memory: a prior incident lost drafts when recovery read partial JSON. Named source: docs/draft-storage.md requires atomic replacement and permits recovery to read the last backup. Missing external decision: the product owner has not decided whether a failed autosave should block navigation or warn and continue. Trace enough callers and consumers to explain origin and impact, keep every encountered finding in the map, and stop before unrelated UI theme code.",
-      "expected_output": "Uses all five supplied evidence summaries before asking only about the missing navigation decision. Explains the direct-write origin and its impact on autosave and recovery, then stops before UI theme code. Retains every encountered finding in the four-quadrant map: the direct-write risk is labeled Changes this task, the stale metrics consumer is labeled Nearby finding, and unsafe backup cleanup is labeled Urgent outside scope because it risks data loss.",
+      "prompt": "Run an adaptive blindspot pass. Inspect every supplied file before asking me anything. Use repository.py for code and trace evidence, git-state.txt for branch state, territory-profile.md for landmines and boundaries, memory.md for prior evidence, and decision-source.md for settled and missing decisions. Ground the map in those files, cite only evidence you actually inspected, ask for external context only when a relevant decision remains missing, and stop before unrelated branches.",
+      "expected_output": "Reads and uses all five fixture files before asking only about the missing navigation decision. Explains the direct-write origin and its impact on autosave and recovery, then stops before UI theme code. Retains every encountered finding in the four-quadrant map: the direct-write risk is labeled Changes this task, the stale metrics consumer is labeled Nearby finding, and unsafe backup cleanup is labeled Urgent outside scope because it risks data loss. Cites only supplied fixture paths and facts.",
       "assertions": [
-        "Uses the supplied repository summary before asking the user for context",
-        "Uses the supplied Git-state summary before asking the user for context",
-        "Uses the supplied profile summary before asking the user for context",
-        "Uses the supplied memory summary before asking the user for context",
-        "Uses the supplied docs/draft-storage.md summary before asking the user for context",
+        "Reads repository.py and uses its write_draft, autosave, recover, draft_metrics, and cleanup_old_drafts evidence before asking the user for context",
+        "Reads git-state.txt and uses its direct-write change and missing-coverage evidence before asking the user for context",
+        "Reads territory-profile.md and uses its persistence landmines and trace boundary before asking the user for context",
+        "Reads memory.md and uses the prior partial-JSON draft-loss evidence before asking the user for context",
+        "Reads decision-source.md and distinguishes its settled rules from its missing external decision before asking the user for context",
         "Asks for external context only about whether failed autosave blocks navigation or warns and continues",
-        "Traces writeDraft through autosave and recovery to explain the direct-write change's origin and impact",
+        "Traces write_draft through autosave and recover to explain the direct-write change's origin and impact",
         "Stops before unrelated UI theme code",
-        "Keeps every supplied finding visible in the four-quadrant map",
+        "Keeps every encountered fixture finding visible in the four-quadrant map",
         "Labels the direct-write risk Changes this task",
-        "Labels the stale draft-metrics.ts consumer Nearby finding",
+        "Labels the stale draft_metrics consumer Nearby finding",
         "Labels unsafe backup cleanup Urgent outside scope because it risks data loss",
+        "Cites only supplied fixture paths and includes no fabricated path or line citations",
         "Contains zero em dashes"
       ],
-      "files": []
+      "files": [
+        "evals/fixtures/adaptive-context/repository.py",
+        "evals/fixtures/adaptive-context/git-state.txt",
+        "evals/fixtures/adaptive-context/territory-profile.md",
+        "evals/fixtures/adaptive-context/memory.md",
+        "evals/fixtures/adaptive-context/decision-source.md"
+      ]
     },
     {
       "id": 7,
       "name": "interview-close-high-impact-unknowns",
-      "prompt": "The evidence scan left three OPEN decisions on the unknowns map. HIGH: whether a retry after payment authorization can cause duplicate charges and therefore requires idempotency. MEDIUM: whether timeout metrics must be split by payment provider. LOW: whether the internal helper name should change. In your first response, interview me without turning the conversation into a questionnaire and show the current OPEN queue.",
-      "expected_output": "Asks exactly one question about the high-impact duplicate-charge and idempotency decision. Shows all three decisions in a visible OPEN queue ordered by impact, leaves them open pending an answer, and does not ask the medium- or low-impact questions yet.",
+      "prompt": "The map has three decisions. HIGH ANSWERED: retries after payment authorization must reuse the original idempotency key, and the gateway guarantees that the same key cannot create a second charge. MEDIUM OPEN: whether timeout metrics must be split by payment provider. LOW OPEN: whether the internal helper name should change. In one response, update the map from my answer and continue the interview without turning it into a questionnaire.",
+      "expected_output": "Marks the idempotency decision visibly CLOSED with the supplied answer. Keeps the metrics and helper-name decisions visibly OPEN, then asks exactly one question about the metrics decision as the next highest-impact OPEN item. Leaves the lower-impact helper-name decision queued and does not ask about it yet.",
       "assertions": [
-        "Asks exactly one question in the first response",
-        "The question addresses whether a retry after payment authorization can duplicate charges and requires idempotency",
-        "Shows a visible OPEN queue containing the duplicate-charge, timeout-metrics, and helper-name decisions in impact order",
-        "Leaves all three decisions OPEN because the user has not answered yet",
-        "Does not ask the medium- or low-impact questions in the first response",
+        "Marks the payment idempotency decision visibly CLOSED on the map",
+        "Records that retries reuse the original idempotency key and cannot create a second charge",
+        "Shows the timeout-metrics and helper-name decisions as OPEN",
+        "Asks exactly one question about timeout metrics as the next highest-impact OPEN decision",
+        "Keeps the lower-impact helper-name decision queued as OPEN",
+        "Does not ask about the helper-name decision in this response",
         "Contains zero em dashes"
       ],
       "files": []
