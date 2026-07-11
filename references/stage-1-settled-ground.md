@@ -23,8 +23,10 @@ Before asking the user for context, inspect every source already available:
 Then trace the touched behavior through its callers, consumers, dependencies,
 state changes, and boundaries for as many hops as needed to explain where it
 comes from and what it affects. Stop at a stable explained boundary. Do not
-branch into unrelated auditing. Keep every interesting discovery encountered on
-that trace in the four-quadrant map, with the priority labels defined in stage 5;
+branch into unrelated auditing. Stopping prevents further traversal; it never
+removes a finding already encountered. File that finding once with the priority
+labels defined in stage 5, then do not trace its own unrelated branches. Keep
+every interesting discovery encountered on the trace in the four-quadrant map;
 there is no separate parking lot.
 
 Only after this scan, when a relevant fact or decision remains missing, ask for
