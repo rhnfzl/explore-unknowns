@@ -64,4 +64,7 @@ a sharp edge.
   stamped partial map showing all four quadrant headings: `Settled ground`,
   `Open decisions`, `Taste`, and `Landmines`. Keep a heading visible when its
   quadrant is empty. Every finding card retains its `Priority: <label>` field;
-  confirmation status does not replace it.
+  confirmation status does not replace it. Before the handoff, include every
+  already encountered discovery outside the task boundary once as `Nearby
+  finding` or `Urgent outside scope` under stage 5's precedence. Do not trace it
+  further or add it to the implementation handoff unless the user expands scope.
