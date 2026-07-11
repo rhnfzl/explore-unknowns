@@ -32,7 +32,10 @@ there is no separate parking lot.
 Only after this scan, when a relevant fact or decision remains missing, ask for
 external context. Name the missing decision and the exact source needed, such as
 the ticket that records its acceptance rule or the recording where it was made.
-Do not add a generic invitation for more context.
+Do not add a generic invitation for more context. Make scan-first visible in the
+reply: disclose every finding from the inspected sources before presenting the
+external-context request. The missing decision may stay in its natural quadrant,
+but the copyable request for the user's answer comes after those findings.
 
 - **General walk:** split the code the task touches among parallel read-only
   subagents and collect what they pin down, so the opening lands fast instead of
