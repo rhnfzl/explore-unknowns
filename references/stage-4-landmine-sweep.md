@@ -33,9 +33,11 @@ code the task will touch and turns silent traps into map entries.
 2. Report each finding as a card, plain words first: **what it is** (one plain
    sentence a non-expert can follow), **why it bites**, **what it changes** about
    the task, then the **evidence** (file and line, leaf-traced for any flow or
-   boundary claim). Give it the discovery priority defined in stage 5 and show
-   `Changes this task` cards first without hiding adjacent cards. A finding
-   without a trace is a PLAUSIBLE, not a CONFIRMED; label it so.
+   boundary claim). Print a visible `Priority: <label>` field using exactly one
+   stage 5 label: `Changes this task`, `Nearby finding`, or
+   `Urgent outside scope`. Show `Changes this task` cards first without hiding
+   adjacent cards. Confirmation is a separate field; a finding without a trace
+   is PLAUSIBLE, not CONFIRMED, and that status never substitutes for priority.
 3. A finding that needs a user decision is put to the user with lettered options
    and your recommendation, and closes as decided or OPEN. A finding that only
    needs awareness goes straight on the map as a sharp edge. A landmine is never
@@ -58,4 +60,8 @@ a sharp edge.
 - **Blindspot pass.** The sweep packaged for reaction: landmine cards, each with
   the evidence, why it bites, and a copyable prompt fix, assembled into one
   better implementation prompt at the end. This is also the express entrance
-  "do a blindspot pass" (stage 1 lite plus this stage).
+  "do a blindspot pass" (stage 1 lite plus this stage). Finish with stage 5's
+  stamped partial map showing all four quadrant headings: `Settled ground`,
+  `Open decisions`, `Taste`, and `Landmines`. Keep a heading visible when its
+  quadrant is empty. Every finding card retains its `Priority: <label>` field;
+  confirmation status does not replace it.

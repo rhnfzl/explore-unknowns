@@ -59,9 +59,11 @@ Choose the recipe from stage 5's observable tier predicates.
   whose wrong answer could make the change unsafe as merge-critical too. Merge
   readiness remains blocked while a merge-critical verification gap is open or
   a merge-critical question is unanswered or incorrect; a wrong answer points
-  back to the relevant explanation. The explainer can also serve as the buy-in
-  document: lead with the demonstrated behavior, pre-answer reviewer objections
-  with evidence, and name who signs off on each remaining decision.
+  back to the relevant explanation. The phase handoff prints this explicit
+  status line: `Merge readiness: BLOCKED until every merge-critical verification gap is closed and every merge-critical question is answered correctly.` The
+  explainer can also serve as the buy-in document: lead with the demonstrated
+  behavior, pre-answer reviewer objections with evidence, and name who signs off
+  on each remaining decision.
 - **Inline-tier:** give a concise inline explanation of what changed, its
   callers or consumers, whether behavior changed, and the supplied verification.
   Do not require a formal artifact or quiz. Offer a lightweight understanding
