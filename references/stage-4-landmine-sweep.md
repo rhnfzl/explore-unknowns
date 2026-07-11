@@ -68,3 +68,7 @@ a sharp edge.
   already encountered discovery outside the task boundary once as `Nearby
   finding` or `Urgent outside scope` under stage 5's precedence. Do not trace it
   further or add it to the implementation handoff unless the user expands scope.
+  When external context is still missing, record the item as OPEN in its
+  quadrant without asking there. Put the actual lettered request for the user's
+  answer after every finding card and the handoff, so the visible output is
+  scan-first too.
