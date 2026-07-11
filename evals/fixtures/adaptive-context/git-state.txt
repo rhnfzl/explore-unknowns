@@ -3,3 +3,5 @@ Sample evaluation fixture. This is not a live Git snapshot.
 Branch change: atomic temporary-file replacement became a direct write in repository.py.
 Changed test: only the write_draft unit test was updated.
 Missing coverage: interrupted writes, recovery reads, and cross-tab writes.
+Task boundary: restore safe writer behavior and verify its autosave and recovery impact.
+Pre-existing adjacent findings: draft_metrics and cleanup_old_drafts were not changed by this branch and are outside the task boundary.
