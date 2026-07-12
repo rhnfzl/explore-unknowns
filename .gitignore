@@ -8,3 +8,9 @@ territory.md
 *.swp
 .idea/
 .vscode/
+
+# Local agent dev-harness state (never ship)
+.agent-harness/
+.claude/
+.code-review-graph/
+.superpowers/
