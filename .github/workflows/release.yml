@@ -25,7 +25,7 @@ jobs:
           set -euo pipefail
           TAG="$VERSION"
           PLUGIN_VER=$(jq -r '.version' .claude-plugin/plugin.json)
-          SKILL_VER=$(sed -n 's/^  version: *"\(.*\)"/\1/p' SKILL.md | head -n1)
+          SKILL_VER=$(sed -n 's/^  version: *"\(.*\)"/\1/p' skills/explore-unknowns/SKILL.md | head -n1)
           if [ "$PLUGIN_VER" != "$TAG" ]; then
             echo "::error::.claude-plugin/plugin.json version ($PLUGIN_VER) != tag ($TAG)"; exit 1
           fi
